@@ -4,6 +4,31 @@ Classifies short English text messages into **six emotions** (sadness, joy, love
 
 ![Python](https://img.shields.io/badge/Python-3-blue) ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange) ![NLTK](https://img.shields.io/badge/NLTK-NLP-green)
 
+## Try it in 30 seconds
+
+The trained models are already in the repository, so you can test them on your own sentences without the dataset:
+
+```bash
+pip install scikit-learn joblib
+python predict.py "I am terrified of the exam tomorrow"
+```
+
+```text
+  "I am terrified of the exam tomorrow"
+  → fear 😨  (96%)
+     joy 😄          1%
+     sadness 😢      1%
+```
+
+Run `python predict.py` with no arguments for an interactive mode. More examples:
+
+| Message | Prediction |
+|---|---|
+| I feel so lonely and nobody calls me anymore | sadness (81%) |
+| I just got the internship, I am so happy | joy (74%) |
+| I can't believe she did that to me, I am furious | anger (96%) |
+| I am terrified of the exam tomorrow | fear (96%) |
+
 ## Results
 
 All models use the same TF-IDF features (5,000 terms) and an 80/20 train/test split on a balanced subset of **42,000 messages** (7,000 per emotion).
@@ -55,6 +80,7 @@ prepare_subset.py   balanced sampling
 clean.py            text preprocessing
 main.py             TF-IDF, training, evaluation, charts, GridSearchCV
 neural_network.py   NumPy neural network
+predict.py          try the saved model on your own text
 models/             saved models
 images/             result charts
 ```
